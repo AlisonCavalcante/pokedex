@@ -1,5 +1,9 @@
-
+.pokemon-card__container{
+  display: flex;
+  flex-wrap: wrap;
+}
 .pokemon-card{
+  display: flex;
   cursor: pointer;
   padding: 10px;
   margin: 10px 10px;
@@ -24,6 +28,7 @@
   padding: 0 10px;
   font-size: 145%;
   margin: 0.5em 0 5px;
+  text-transform: capitalize;
 }
 .pokemon-card__types{
   display: flex;

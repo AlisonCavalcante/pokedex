@@ -8,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonCardComponent implements OnInit {
 
+  pokemons: any[] = [];
+
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokemonService.getPokemons().subscribe(response =>{
-      console.log(response);
+    this.pokemonService.getPokemons()
+    .subscribe((response: any ) =>{
+      response.results.forEach((result: any) => {
+        this.pokemonService.getMaisInfo(result.name)
+        .subscribe((uniqresponse: any) =>{
+          this.pokemons.push(uniqresponse);
+          console.log(this.pokemons);
+        })
+      })
     })
   }
 
