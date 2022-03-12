@@ -3,6 +3,7 @@
   flex-wrap: wrap;
 }
 .pokemon-card{
+  border-radius: 10px;
   display: flex;
   cursor: pointer;
   padding: 10px;
@@ -14,9 +15,14 @@
   transform: scale(1.1);
 
 }
+.pokemon-card__img-content{
+  display: flex;
+  justify-content: center;
+}
 .pokemon-card__image{
   background: #F2F2F2;
   border-radius: 5px;
+  width: 80%;
 }
 .pokemon-card__number{
   padding: 0 10px;
@@ -44,5 +50,9 @@
   font-size: 11px;
   text-align: center;
   background-color: aquamarine;
+}
 
+.pokemon-card__type--grass{
+  background: #9bcc50;
+  color: #212121;
 }

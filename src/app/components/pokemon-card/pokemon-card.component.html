@@ -1,9 +1,11 @@
 <div class="pokemon-card__container">
   <div *ngFor="let pokemon of pokemons" class="card border-info mb-3 pokemon-card">
-    <img  [src]="pokemon.sprites.front_default" class="card-img-top pokemon-card__image " alt="...">
+    <div class="pokemon-card__img-content">
+      <img  [src]="pokemon.sprites.front_default" class="card-img-top pokemon-card__image " alt="...">
+    </div>
     <div class="card-body">
       <div class="pokemon-card__number">
-        N0{{pokemon.order}}
+        N0{{pokemon.id}}
       </div>
       <div class="pokemon-card__name">
         {{pokemon.name}}

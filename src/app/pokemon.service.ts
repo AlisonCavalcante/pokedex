@@ -12,7 +12,7 @@ export class PokemonService {
 
   // pegando todos os pokemons
   getPokemons(){
-    return this.http.get(`${this.urlBase}?limit=10`);
+    return this.http.get(`${this.urlBase}?limit=20`);
   }
 
   // buscando informações de cada pokemon
