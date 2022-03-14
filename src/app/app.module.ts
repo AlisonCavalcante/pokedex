@@ -6,12 +6,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonCardComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    PokemonDetailsComponent
   ],
   imports: [
     BrowserModule,
