@@ -5,14 +5,16 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
 
 const routes: Routes = [
+
   {
-    path: '',
+    path:'',
     component: PokemonListComponent,
   },
   {
-    path:'pokemon/:id',
+    path: 'pokemon/:id',
     component: PokemonDetailsComponent,
-  }
+  },
+
 
 ]
 

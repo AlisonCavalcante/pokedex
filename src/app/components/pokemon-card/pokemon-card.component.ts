@@ -1,5 +1,6 @@
 import { PokemonService } from './../../pokemon.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -12,7 +13,7 @@ export class PokemonCardComponent implements OnInit {
   totalPokemons!: number;
   pokemons: any[] = [];
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemons();
@@ -30,5 +31,8 @@ export class PokemonCardComponent implements OnInit {
       })
     })
   }
-
+  navegacao(id: string){
+    console.log("entrando aqui")
+    this.router.navigate(['pokemon', id]);
+  }
 }
