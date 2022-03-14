@@ -11,8 +11,8 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   // pegando todos os pokemons
-  getPokemons(){
-    return this.http.get(`${this.urlBase}?limit=20`);
+  getPokemons(limit: number, offset: number){
+    return this.http.get(`${this.urlBase}?limit=${limit}&offset=${offset}`);
   }
 
   // buscando informações de cada pokemon

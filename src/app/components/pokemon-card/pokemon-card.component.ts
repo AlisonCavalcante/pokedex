@@ -8,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonCardComponent implements OnInit {
 
+  page = 1;
+  totalPokemons!: number;
   pokemons: any[] = [];
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokemonService.getPokemons()
+    this.getPokemons();
+  }
+  getPokemons(){
+    this.pokemonService.getPokemons(10, this.page + 0)
     .subscribe((response: any ) =>{
+      this.totalPokemons = response.count;
       response.results.forEach((result: any) => {
         this.pokemonService.getMaisInfo(result.name)
         .subscribe((uniqresponse: any) =>{
