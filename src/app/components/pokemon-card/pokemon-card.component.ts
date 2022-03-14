@@ -35,4 +35,8 @@ export class PokemonCardComponent implements OnInit {
     console.log("entrando aqui")
     this.router.navigate(['pokemon', id]);
   }
+
+  getPesquisar(value: string){
+    console.log(value);
+  }
 }

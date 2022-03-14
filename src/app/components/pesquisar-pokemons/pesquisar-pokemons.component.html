@@ -2,4 +2,6 @@
       type="text"
       class="form-control bg-light text-dark border-0 my-4 text-center"
       placeholder="Pesquisar"
+      (keyup)="pesquisar()"
+      [(ngModel)]="pesquisarTexto"
 />
