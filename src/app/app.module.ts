@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
@@ -14,7 +15,8 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
