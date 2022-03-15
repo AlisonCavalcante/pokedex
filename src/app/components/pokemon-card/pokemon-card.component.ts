@@ -11,6 +11,7 @@ export class PokemonCardComponent implements OnInit {
 
   page = 1;
   totalPokemons!: number;
+  setPokemons: any [] = [];
   pokemons: any[] = [];
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
@@ -26,6 +27,7 @@ export class PokemonCardComponent implements OnInit {
         this.pokemonService.getMaisInfo(result.name)
         .subscribe((uniqresponse: any) =>{
           this.pokemons.push(uniqresponse);
+          this.setPokemons.push(uniqresponse);
           console.log(this.pokemons);
         })
       })
@@ -38,5 +40,9 @@ export class PokemonCardComponent implements OnInit {
 
   getPesquisar(value: string){
     console.log(value);
+    const filter = this.setPokemons.filter((res: any) =>{
+      return !res.name.indexOf(value.toLowerCase());
+    });
+    this.pokemons = filter;
   }
 }
