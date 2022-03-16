@@ -11,6 +11,7 @@ import { forkJoin } from 'rxjs';
 export class PokemonDetailsComponent implements OnInit {
 
   id!: string;
+  pokemons: any[] = [];
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
   private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
@@ -28,7 +29,8 @@ export class PokemonDetailsComponent implements OnInit {
 
     return forkJoin([pokemon, name]).subscribe(
       res =>{
-        console.log(res);
+        this.pokemons = res;
+        console.log(this.pokemons);
       }
     )
 

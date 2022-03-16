@@ -1,0 +1,18 @@
+.container{
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-card_container{
+  background-color: #C0C0C0;
+  border-radius: 10px;
+  height: 400px;
+  width: 600px;
+  line-height: 50px;
+  top: 50%;
+  margin-top: -200px;
+  left: 50%; /* posiciona na metade da tela */
+  margin-left: -300px;
+  justify-content: center;
+}
