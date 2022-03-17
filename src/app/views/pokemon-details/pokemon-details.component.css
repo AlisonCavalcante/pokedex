@@ -1,11 +1,11 @@
-.container{
+.container {
   height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
-.pokemon-card_container{
-  background-color: #C0C0C0;
+.pokemon-card_container {
+  background-color: #c0c0c0;
   border-radius: 10px;
   height: 600px;
   width: 600px;
@@ -16,36 +16,36 @@
   align-items: center;
 }
 
-.card-img-top{
+.card-img-top {
   width: 200px;
   height: 200px;
   margin-top: 10px;
 }
-.card-body{
+.card-body {
   width: 100%;
   font-family: "Signika", arial, sans-serif;
 }
-.card-body h2{
+.card-body h2 {
   margin-left: 5px;
 }
-.pokemon-card_estatisticas{
+.pokemon-card_estatisticas {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-.pokemon-card_estatisticas div{
+.pokemon-card_estatisticas div {
   width: 50%;
   /* margin: 5px;
   border: 1px solid grey; */
 }
 
-.pokemon-card_estatisticas .card{
+.pokemon-card_estatisticas .card {
   display: flex;
   flex-direction: column;
-  background-color: 	#c2ccd8;
+  background-color: #c2ccd8;
 }
 
-.pokemon-card_estatisticas .card div{
+.pokemon-card_estatisticas .card div {
   border-bottom: 1px solid grey;
   justify-content: space-between;
   display: flex;
@@ -53,7 +53,7 @@
   width: 100%;
 }
 
-.pokemon-card_estatisticas .card div p{
+.pokemon-card_estatisticas .card div p {
   margin: 10px;
   text-transform: uppercase;
   font-weight: bold;
@@ -67,56 +67,56 @@
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  }
-  @-webkit-keyframes slideInDown {
+}
+@-webkit-keyframes slideInDown {
   0% {
-  -webkit-transform: translateY(-100%);
-  transform: translateY(-100%);
-  visibility: visible;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
   }
   100% {
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
-  }
-  @keyframes slideInDown {
+}
+@keyframes slideInDown {
   0% {
-  -webkit-transform: translateY(-100%);
-  transform: translateY(-100%);
-  visibility: visible;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
   }
   100% {
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
-  }
-  .slideInRight {
-    -webkit-animation-name: slideInRight;
-    animation-name: slideInRight;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    }
-    @-webkit-keyframes slideInRight {
-    0% {
+}
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInRight {
+  0% {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     visibility: visible;
-    }
-    100% {
+  }
+  100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    }
-    }
-    @keyframes slideInRight {
-    0% {
+  }
+}
+@keyframes slideInRight {
+  0% {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     visibility: visible;
-    }
-    100% {
+  }
+  100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    }
-    }
+  }
+}
