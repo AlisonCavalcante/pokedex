@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PokemonCardComponent implements OnInit {
 
-  page = 1;
+  page = 0;
   totalPokemons!: number;
   setPokemons: any [] = [];
   pokemons: any[] = [];
@@ -20,7 +20,7 @@ export class PokemonCardComponent implements OnInit {
     this.getPokemons();
   }
   getPokemons(){
-    this.pokemonService.getPokemons(10, this.page + 0)
+    this.pokemonService.getPokemons(10, this.page ++)
     .subscribe((response: any ) =>{
       this.totalPokemons = response.count;
       response.results.forEach((result: any) => {
