@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class PokemonService {
 
   urlBase: string = "https://pokeapi.co/api/v2/pokemon";
-
+  urlEvolucoes: string = "https://pokeapi.co/api/v2/evolution-chain/";
   constructor(private http: HttpClient) { }
 
   // pegando todos os pokemons
@@ -24,6 +24,13 @@ export class PokemonService {
 
   getPokemon(url: string): Observable<any>{
     return this.http.get(url).pipe(
+      map(
+        res => res
+      )
+    )
+  }
+  getPokemonEvolucoes(id: string){
+    return this.http.get(`${this.urlEvolucoes}${id}`).pipe(
       map(
         res => res
       )
