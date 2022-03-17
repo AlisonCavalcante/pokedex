@@ -7,18 +7,55 @@
 .pokemon-card_container{
   background-color: #C0C0C0;
   border-radius: 10px;
-  height: 400px;
+  height: 600px;
   width: 600px;
   line-height: 50px;
-  top: 50%;
-  margin-top: -200px;
+  margin-top: 2%;
   left: 50%; /* posiciona na metade da tela */
   margin-left: -300px;
   align-items: center;
 }
 
-.pokemon-card_img{
-  width: 250px;
-  height: 250px;
+.card-img-top{
+  width: 200px;
+  height: 200px;
   margin-top: 10px;
 }
+.card-body{
+  width: 100%;
+}
+.card-body h2{
+  margin-left: 5px;
+}
+.pokemon-card_estatisticas{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.pokemon-card_estatisticas div{
+  width: 50%;
+  /* margin: 5px;
+  border: 1px solid grey; */
+}
+
+.pokemon-card_estatisticas .card{
+  display: flex;
+  flex-direction: column;
+  background-color: 	#c2ccd8;
+}
+
+.pokemon-card_estatisticas .card div{
+  border-bottom: 1px solid grey;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.pokemon-card_estatisticas .card div p{
+  margin: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0px 20px;
+}
+
