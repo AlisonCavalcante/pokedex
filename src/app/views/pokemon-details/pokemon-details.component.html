@@ -1,8 +1,12 @@
 <div class="container">
-  <div class="card pokemon-card_container">
-    <div class="pokemon-card_img">
-      <img class="" [src]="pokemons[0].sprites.front_default">
+  <ng-template [ngIf]="isLoading" >
+    <div class="card pokemon-card_container">
+      <div class="pokemon-card_img">
+        <img class="card-img-top" [src]="pokemons[0].sprites.other.dream_world.front_default">
+      </div>
+      <div class="card-body">
+        <h2>Estatísticas</h2>
+      </div>
     </div>
-  </div>
-
+  </ng-template>
 </div>

@@ -22,7 +22,8 @@
 .pokemon-card__image{
   background: #F2F2F2;
   border-radius: 5px;
-  width: 80%;
+  width: 200px;
+  height: 200px;
 }
 .pokemon-card__number{
   padding: 0 10px;

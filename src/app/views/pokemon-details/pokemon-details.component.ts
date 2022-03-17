@@ -12,6 +12,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   id!: string;
   pokemons: any[] = [];
+  public isLoading: boolean = false;
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
   private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
@@ -30,6 +31,7 @@ export class PokemonDetailsComponent implements OnInit {
     return forkJoin([pokemon, name]).subscribe(
       res =>{
         this.pokemons = res;
+        this.isLoading = true;
         console.log(this.pokemons);
       }
     )
