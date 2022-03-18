@@ -12,7 +12,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   id!: string;
   pokemons: any[] = [];
-  teste: any[] = [];
+
 
   public isLoading: boolean = false;
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
@@ -22,7 +22,6 @@ export class PokemonDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemon;
-    this.poKemonEvolucoes;
   }
 
   get pokemon(){
@@ -39,13 +38,6 @@ export class PokemonDetailsComponent implements OnInit {
       }
     )
 
-  }
-  get poKemonEvolucoes() {
-    this.pokemonService.getPokemonEvolucoes(this.id).subscribe( (res: any )=> {
-      this.teste = res;
-      console.log(this.teste);
-    })
-    return console.log(this.teste);
   }
 
 }

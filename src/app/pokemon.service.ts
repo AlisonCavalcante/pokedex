@@ -9,7 +9,8 @@ import { map } from 'rxjs/operators';
 export class PokemonService {
 
   urlBase: string = "https://pokeapi.co/api/v2/pokemon";
-  urlEvolucoes: string = "https://pokeapi.co/api/v2/evolution-chain/";
+  // urlEvolucoes: string = "https://pokeapi.co/api/v2/evolution-chain/";
+  urlEvolucoes: string = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
   constructor(private http: HttpClient) { }
 
   // pegando todos os pokemons
@@ -29,12 +30,21 @@ export class PokemonService {
       )
     )
   }
-  getPokemonEvolucoes(id: string){
-    return this.http.get(`${this.urlEvolucoes}${id}`).pipe(
+
+  getPokemonEvolucoes(){
+    return this.http.get(this.urlEvolucoes).pipe(
       map(
         res => res
       )
     )
   }
+
+  // getPokemonEvolucoes(id: string){
+  //   return this.http.get(`${this.urlEvolucoes}${id}`).pipe(
+  //     map(
+  //       res => res
+  //     )
+  //   )
+  // }
 
 }
