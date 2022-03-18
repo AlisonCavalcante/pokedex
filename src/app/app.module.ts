@@ -11,6 +11,7 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonDetailsComponent } from './views/pokemon-details/pokemon-details.component';
 import { PesquisarPokemonsComponent } from './components/pesquisar-pokemons/pesquisar-pokemons.component';
+import { PokemonCardEvolucoesComponent } from './components/pokemon-card-evolucoes/pokemon-card-evolucoes.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PesquisarPokemonsComponent } from './components/pesquisar-pokemons/pesq
     PokemonListComponent,
     PokemonDetailsComponent,
     PesquisarPokemonsComponent,
+    PokemonCardEvolucoesComponent,
   ],
   imports: [
     BrowserModule,
