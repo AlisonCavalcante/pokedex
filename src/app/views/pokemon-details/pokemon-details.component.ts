@@ -28,16 +28,14 @@ export class PokemonDetailsComponent implements OnInit {
     this.id = this.activeRouter.snapshot.params['id'];
     const pokemon = this.pokemonService.getPokemon(`${this.urlPokemon}/${this.id}`);
     const name = this.pokemonService.getPokemon(`${this.urlName}/${this.id}`);
-    console.log(this.id);
 
     return forkJoin([pokemon, name]).subscribe(
       res =>{
         this.pokemons = res;
         this.isLoading = true;
-        console.log(this.pokemons);
       }
-    )
 
+    )
   }
 
 }
