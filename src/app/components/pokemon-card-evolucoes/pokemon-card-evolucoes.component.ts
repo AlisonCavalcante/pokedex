@@ -14,6 +14,7 @@ export class PokemonCardEvolucoesComponent implements OnInit {
   evolucoes: any[] = [];
   evolucao: any[] = [];
   prev_evolution: any;
+  sem_evolucao = true;
   constructor(
     private poKemonService: PokemonService,
     private router: ActivatedRoute
@@ -35,7 +36,8 @@ export class PokemonCardEvolucoesComponent implements OnInit {
         this.evolucoes.push(pokemon.next_evolution);
       }
     }
-    if (this.evolucoes.length != 0) {
+    if (this.evolucoes[0] != undefined) {
+      this.sem_evolucao = false;
       for (let evol of this.evolucoes[0]) {
         let name = evol.name.toLowerCase();
         this.poKemonService

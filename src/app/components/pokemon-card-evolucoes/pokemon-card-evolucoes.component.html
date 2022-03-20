@@ -1,8 +1,15 @@
-<div class="card">
-  <div class="pokemon-card__header">
+<div class="container">
+  <div *ngIf="!sem_evolucao" class="card pokemon-card_container">
+    <div class="pokemon-card__header">
+      <h1>Evoluções</h1>
+    </div>
+    <div class="pokemon-card__body">
+      <div class="card pokemon-card__evolucoes"  *ngFor="let evol of evolucao">
+       <img class="pokemon-card__img" [src]="evol.sprites.other.dream_world.front_default">
+       <div class="pokemon-card__evolucoes-body">
+         <h3>{{evol.name}}</h3>
+       </div>
+      </div>
+    </div>
   </div>
-</div>
-
-<div *ngFor="let evol of evolucao">
-  <img [src]="evol.sprites.other.dream_world.front_default">
 </div>

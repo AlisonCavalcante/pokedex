@@ -1,0 +1,32 @@
+.pokemon-card_container {
+  background-color: #c0c0c0;
+  border-radius: 10px;
+  height: 600px;
+  width: 1000px;
+  margin-bottom: 2%;
+  left: 50%; /* posiciona na metade da tela */
+  margin-left: -500px;
+  align-items: center;
+  font-family: "Signika", arial, sans-serif;
+}
+.pokemon-card__header {
+  text-align: center;
+  padding: 10px;
+}
+.pokemon-card__body {
+  display: flex;
+  flex-direction: row;
+}
+.pokemon-card__evolucoes {
+  margin: 30px;
+  border-radius: 10px;
+
+}
+.pokemon-card__img {
+  width: 200px;
+  height: 200px;
+}
+.pokemon-card__evolucoes-body{
+  text-align: center;
+  margin: 20px;
+}
