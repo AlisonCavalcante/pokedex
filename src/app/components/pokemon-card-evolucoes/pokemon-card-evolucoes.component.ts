@@ -16,7 +16,6 @@ export class PokemonCardEvolucoesComponent implements OnInit {
   prev_evolution: any;
   sem_evolucao = true;
   evolucao_previa = false;
-  ultima_evolucao = false;
 
   constructor(
     private poKemonService: PokemonService,
@@ -30,8 +29,45 @@ export class PokemonCardEvolucoesComponent implements OnInit {
     });
   }
 
-
   extrairEvolucoes() {
+    // obtendo os array das evoluçõe prévias e próximas
+    this.getNext_Prev_Evolution();
+    // realizando a chamada das informações das evoluções prévias e próximas mais a ordenação pelo id;
+    this.getPokemon(this.evolucoes[0]);
+    this.getPokemon(this.evolucoes[1]);
+
+    // requisição do pokemon que está no detalhe
+    this.poKemonService
+      .getPokemon(
+        `https://pokeapi.co/api/v2/pokemon/${this.prev_evolution.name.toLowerCase()}`
+      )
+      .subscribe((res) => {
+        this.evolucao.push(res);
+        this.evolucao.sort((a: any, b: any) => {
+          return a.id - b.id;
+        });
+      });
+
+  }
+
+  getPokemon(array: any) {
+    if (array) {
+      this.sem_evolucao = false;
+      for (let evol of array) {
+        let name = evol.name.toLowerCase();
+        this.poKemonService
+          .getPokemon(`https://pokeapi.co/api/v2/pokemon/${name}`)
+          .subscribe((res) => {
+            this.evolucao.push(res);
+            this.evolucao.sort((a: any, b: any) => {
+              return a.id - b.id;
+            });
+          });
+      }
+    }
+  }
+
+  getNext_Prev_Evolution() {
     this.id = this.router.snapshot.params['id'];
     //busca o pokemon que vai ser exibido as evoluções pelo id vindo da rota;
     for (let pokemon of this.pokemons) {
@@ -39,54 +75,19 @@ export class PokemonCardEvolucoesComponent implements OnInit {
         //pegando a forma do pokemon da rota para juntar no array com as próximas
         this.prev_evolution = pokemon;
         // salvando o array de evoluções
+
         if (pokemon.next_evolution == undefined) {
-          if (pokemon.prev_evolution != undefined) {
+          if (pokemon.prev_evolution) {
             this.evolucoes.push(pokemon.prev_evolution);
-            this.evolucoes.push(pokemon.next_evolution);
           }
-        } else this.evolucoes.push(pokemon.next_evolution);
-        this.evolucao_previa = true;
+        } else if (pokemon.next_evolution) {
+          this.evolucoes.push(pokemon.next_evolution);
+          this.evolucao_previa = true;
+          if (pokemon.prev_evolution) {
+            this.evolucoes.push(pokemon.prev_evolution);
+          }
+        }
       }
     }
-    if (this.evolucoes[0] != undefined) {
-      this.sem_evolucao = false;
-      for (let evol of this.evolucoes[0]) {
-        // console.log(evol)
-        let name = evol.name.toLowerCase();
-        this.poKemonService
-          .getPokemon(`https://pokeapi.co/api/v2/pokemon/${name}`)
-          .subscribe((res) => {
-            this.evolucao.push(res);
-          });
-      }
-      this.poKemonService
-        .getPokemon(
-          `https://pokeapi.co/api/v2/pokemon/${this.prev_evolution.name.toLowerCase()}`
-        )
-        .subscribe((res) => {
-          if (this.evolucao_previa) {
-            this.evolucao.unshift(res);
-          } else {
-            this.evolucao.push(res);
-          }
-          console.log(this.evolucao)
-          this.evolucao.sort((a: any,b: any) =>{
-            return a.id - b.id
-          })
-          console.log(this.evolucao)
-        });
-
-
-    }
-
-
-  }
-  getPokemon(name: string){
-    this.poKemonService
-    .getPokemon(
-      `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`
-    ).subscribe(res =>{
-      this.evolucao = res;
-    })
   }
 }
