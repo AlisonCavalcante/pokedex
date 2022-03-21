@@ -28,13 +28,12 @@ export class PokemonCardComponent implements OnInit {
         .subscribe((uniqresponse: any) =>{
           this.pokemons.push(uniqresponse);
           this.setPokemons.push(uniqresponse);
-          console.log(this.pokemons);
+          // console.log(this.pokemons);
         })
       })
     })
   }
   navegacao(id: string){
-    console.log("entrando aqui")
     this.router.navigate(['pokemon', id]);
   }
 
