@@ -4,11 +4,30 @@
       <h1>Evoluções</h1>
     </div>
     <div class="pokemon-card__body">
-      <div class="card pokemon-card__evolucoes"  *ngFor="let evol of evolucao">
-       <img class="pokemon-card__img" [src]="evol.sprites.other.dream_world.front_default">
-       <div class="pokemon-card__evolucoes-body">
-         <h3>{{evol.name}}</h3>
-       </div>
+      <div
+        class="card pokemon-card__evolucoes"
+        *ngFor="let evol of evolucao"
+        (click)="navegar(evol.id)"
+        [routerLink]="['/pokemon', evol.id]"
+      >
+        <img
+          class="pokemon-card__img"
+          [src]="evol.sprites.other.dream_world.front_default"
+        />
+        <div class="pokemon-card__evolucoes-body">
+         <div class="pokemon-card__name">
+          <h3 style="text-transform: capitalize;">{{evol.name}}</h3>
+         </div>
+          <div class="pokemon-card__types">
+            <div
+              *ngFor="let type of evol.types"
+              class="pokemon-card__type"
+              [class]="'pokemon-card__type--' + type.type.name.toLowerCase()"
+            >
+              {{ type.type.name }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -27,15 +27,25 @@ export class PokemonDetailsComponent implements OnInit {
   get pokemon(){
     this.id = this.activeRouter.snapshot.params['id'];
     const pokemon = this.pokemonService.getPokemon(`${this.urlPokemon}/${this.id}`);
-    const name = this.pokemonService.getPokemon(`${this.urlName}/${this.id}`);
+    const evolucoes = this.pokemonService.getPokemonEvolucoes();
 
-    return forkJoin([pokemon, name]).subscribe(
+    return forkJoin([pokemon, evolucoes]).subscribe(
       res =>{
         this.pokemons = res;
         this.isLoading = true;
+        this.getInfoAdcionais();
       }
-
     )
+  }
+
+  getInfoAdcionais(){
+    for(let pokemon of this.pokemons[1].pokemon){
+      if(this.id == pokemon.id){
+        this.pokemons.push(pokemon.weaknesses)
+        this.pokemons.splice(1,1)
+        console.log(this.pokemons)
+      }
+    }
   }
 
 }

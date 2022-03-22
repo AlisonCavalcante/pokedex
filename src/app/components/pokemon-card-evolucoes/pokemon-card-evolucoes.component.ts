@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from './../../pokemon.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForOf } from '@angular/common';
@@ -19,7 +19,8 @@ export class PokemonCardEvolucoesComponent implements OnInit {
 
   constructor(
     private poKemonService: PokemonService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private rota: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +28,10 @@ export class PokemonCardEvolucoesComponent implements OnInit {
       this.pokemons = res.pokemon;
       this.extrairEvolucoes();
     });
+  }
+
+  navegar(id: string){
+    this.rota.navigate(['/pokemon',id]);
   }
 
   extrairEvolucoes() {
