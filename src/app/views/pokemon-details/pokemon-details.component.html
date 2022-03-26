@@ -8,40 +8,42 @@
             [src]="pokemons[0].sprites.other.dream_world.front_default"
           />
           <h1
-          class="slideInRight"
-          style="text-align: center; text-transform: capitalize"
-        >
-          {{ pokemons[0].name }}
-        </h1>
+            class="slideInRight"
+            style="text-align: center; text-transform: capitalize"
+          >
+            {{ pokemons[0].name }}
+          </h1>
         </div>
         <div class="card pokemon-card__infos">
-         <div class="pokemon-card__infos-body">
-          <div>
-            <ul>
-              <li>
-                <span class="title-atributo">Height:</span>
-                <span>sad</span>
-              </li>
-              <li>
-                <span class="title-atributo">Weigh:</span>
-                <span>sa</span>
-              </li>
-              <li></li>
-            </ul>
+          <div class="pokemon-card__infos-body">
+            <div>
+              <ul>
+                <li>
+                  <span class="title-atributo">Height:</span>
+                  <span>sad</span>
+                </li>
+                <li>
+                  <span class="title-atributo">Weigh:</span>
+                  <span>sa</span>
+                </li>
+                <li></li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <span class="title-atributo">Category:</span>
+                  <span></span>
+                </li>
+                <li>
+                  <span class="title-atributo">Abilities:</span>
+                  <span class="atributo-value">{{
+                    pokemons[0].abilities[0].ability.name
+                  }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <ul>
-              <li>
-                <span class="title-atributo">Category:</span>
-                <span></span>
-              </li>
-              <li>
-                <span class="title-atributo">Abilities:</span>
-                <span class="atributo-value">{{pokemons[0].abilities[0].ability.name}}</span>
-              </li>
-            </ul>
-          </div>
-         </div>
         </div>
       </div>
 
@@ -77,8 +79,25 @@
             </div>
           </div>
         </div>
+        <div class="pokemon-card__types">
+          <h2>Fraquezas</h2>
+          <div class="pokemon-card__type-container">
+            <div
+              *ngFor="let type of pokemons[1]"
+              class="pokemon-card__type"
+              [class]="'pokemon-card__type--' + type.toLowerCase()"
+            >
+              {{ type }}
+            </div>
+          </div>
+        </div>
         <div style="margin: 30px">
-          <a style="width: 100%; background-color: #ee6b2f" href="" class="btn btn-primary">Explorar Mais Pokémons</a>
+          <a
+            style="width: 100%; background-color: #ee6b2f"
+            href=""
+            class="btn btn-primary"
+            >Explorar Mais Pokémons</a
+          >
         </div>
       </div>
     </div>
