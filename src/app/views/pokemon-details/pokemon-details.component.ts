@@ -21,11 +21,16 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(private activeRouter: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    this.activeRouter.params.subscribe(
+      (params: any) =>{
+        this.id = params['id'];
+      }
+    )
     this.pokemon;
   }
 
   get pokemon(){
-    this.id = this.activeRouter.snapshot.params['id'];
+
     const pokemon = this.pokemonService.getPokemon(`${this.urlPokemon}/${this.id}`);
     const evolucoes = this.pokemonService.getPokemonEvolucoes();
 

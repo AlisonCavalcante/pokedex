@@ -28,7 +28,7 @@ export class PokemonCardComponent implements OnInit {
         .subscribe((uniqresponse: any) =>{
           this.pokemons.push(uniqresponse);
           this.setPokemons.push(uniqresponse);
-          // console.log(this.pokemons);
+           console.log(this.pokemons);
         })
       })
     })

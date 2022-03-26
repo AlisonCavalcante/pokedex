@@ -4,7 +4,7 @@
 <div class="container pokemon-card__container">
   <div *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 10, currentPage: page, totalItems: totalPokemons }" (click)="navegacao(pokemon.id)"  class="card border-info mb-3 pokemon-card">
     <div class="pokemon-card__img-content">
-      <img  [src]="pokemon.sprites.other.dream_world.front_default" class="card-img-top pokemon-card__image " alt="...">
+      <img  [src]="pokemon.sprites.other.home.front_default" class="card-img-top pokemon-card__image " alt="...">
     </div>
     <div class="card-body">
       <div class="pokemon-card__number">
