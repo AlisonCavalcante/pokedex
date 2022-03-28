@@ -9,6 +9,7 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./pokemon-card-evolucoes.component.css'],
 })
 export class PokemonCardEvolucoesComponent implements OnInit {
+
   id!: string;
   pokemons: any[] = [];
   evolucoes: any[] = [];
@@ -30,8 +31,8 @@ export class PokemonCardEvolucoesComponent implements OnInit {
     });
   }
 
-  navegar(id: string){
-    this.rota.navigate(['/pokemon',id]);
+  navegar(id: string) {
+    this.rota.navigate(['/pokemon', id]);
   }
 
   extrairEvolucoes() {
@@ -43,16 +44,13 @@ export class PokemonCardEvolucoesComponent implements OnInit {
 
     // requisição do pokemon que está no detalhe
     this.poKemonService
-      .getPokemon(
-        `https://pokeapi.co/api/v2/pokemon/${this.prev_evolution.name.toLowerCase()}`
-      )
+      .getPokemon(this.prev_evolution.name.toLowerCase())
       .subscribe((res) => {
         this.evolucao.push(res);
         this.evolucao.sort((a: any, b: any) => {
           return a.id - b.id;
         });
       });
-
   }
 
   getPokemon(array: any) {
@@ -60,14 +58,12 @@ export class PokemonCardEvolucoesComponent implements OnInit {
       this.sem_evolucao = false;
       for (let evol of array) {
         let name = evol.name.toLowerCase();
-        this.poKemonService
-          .getPokemon(`https://pokeapi.co/api/v2/pokemon/${name}`)
-          .subscribe((res) => {
-            this.evolucao.push(res);
-            this.evolucao.sort((a: any, b: any) => {
-              return a.id - b.id;
-            });
+        this.poKemonService.getPokemon(name).subscribe((res) => {
+          this.evolucao.push(res);
+          this.evolucao.sort((a: any, b: any) => {
+            return a.id - b.id;
           });
+        });
       }
     }
   }

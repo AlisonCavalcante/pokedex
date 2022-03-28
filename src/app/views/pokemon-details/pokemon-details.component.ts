@@ -2,24 +2,22 @@ import { PokemonService } from './../../pokemon.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
   styleUrls: ['./pokemon-details.component.css'],
 })
 export class PokemonDetailsComponent implements OnInit {
+
   id!: string;
   pokemons: any[] = [];
 
   public isLoading: boolean = false;
-  private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
-  private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
   constructor(
     private activeRouter: ActivatedRoute,
-    private pokemonService: PokemonService,
-    private location: Location
+    private pokemonService: PokemonService
   ) {}
 
   ngOnInit(): void {
@@ -28,19 +26,16 @@ export class PokemonDetailsComponent implements OnInit {
       let idTemporario;
       this.pokemon;
       idTemporario = params['id'];
-      if(this.id != idTemporario){
+      if (this.id != idTemporario) {
         this.id = idTemporario;
         this.pokemon;
         window.location.reload();
       }
-
     });
   }
 
   get pokemon() {
-    const pokemon = this.pokemonService.getPokemon(
-      `${this.urlPokemon}/${this.id}`
-    );
+    const pokemon = this.pokemonService.getPokemon(this.id);
     const evolucoes = this.pokemonService.getPokemonEvolucoes();
 
     return forkJoin([pokemon, evolucoes]).subscribe((res) => {
