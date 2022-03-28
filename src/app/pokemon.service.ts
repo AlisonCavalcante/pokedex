@@ -1,3 +1,4 @@
+import { Constantes } from './utils/constantes';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,35 +9,48 @@ import { map } from 'rxjs/operators';
 })
 export class PokemonService {
 
-  urlBase: string = "https://pokeapi.co/api/v2/pokemon";
-  urlEvolucoes: string = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
-
+  url: string = "";
   constructor(private http: HttpClient) { }
 
   // pegando todos os pokemons
   getPokemons(limit: number, offset: number){
-    return this.http.get(`${this.urlBase}?limit=${limit}&offset=${offset}`);
+    return this.http.get(Constantes.URLBASE+`?limit=${limit}&offset=${offset}`);
   }
 
   // buscando informações de cada pokemon
   getMaisInfo(name: string){
-    return this.http.get(`${this.urlBase}/${name}`);
+    return this.http.get(Constantes.URLBASE+`${name}`);
   }
 
   getPokemon(id: string): Observable<any>{
-    return this.http.get(`${this.urlBase}/${id}`).pipe(
+    return this.http.get(Constantes.URLBASE+`${id}`).pipe(
+      map(
+        res => res
+      )
+    )
+  }
+  // novasEvolucoes(id: string){
+  //   this.http.get(`${this.urlBase}/${id}`).subscribe((res: any) =>{
+  //      this.url = res.species.url;
+  //     this.http.get(this.url).subscribe((res: any) =>{
+  //       this.url = res.evolution_chain.url;
+
+  //     })
+  //   })
+  //   console.log(this.url)
+  //   return this.http.get(this.url);
+  // }
+
+  getPokemonEvolucoes(){
+    return this.http.get(Constantes.URLEVOLUCOES).pipe(
       map(
         res => res
       )
     )
   }
 
-  getPokemonEvolucoes(){
-    return this.http.get(this.urlEvolucoes).pipe(
-      map(
-        res => res
-      )
-    )
+  getGenerico(url: string){
+    return this.http.get(url);
   }
 
 

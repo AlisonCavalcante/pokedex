@@ -1,7 +1,8 @@
+import { Constantes } from './../../utils/constantes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from './../../pokemon.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForOf } from '@angular/common';
+
 
 @Component({
   selector: 'app-pokemon-card-evolucoes',
@@ -29,10 +30,24 @@ export class PokemonCardEvolucoesComponent implements OnInit {
       this.pokemons = res.pokemon;
       this.extrairEvolucoes();
     });
+    this.novasEvolucoes();
   }
 
   navegar(id: string) {
     this.rota.navigate(['/pokemon', id]);
+  }
+
+  novasEvolucoes(){
+    this.id = this.router.snapshot.params['id'];
+    this.poKemonService.getGenerico(Constantes.URLBASE+`${this.id}`).subscribe((res: any) =>{
+      let url = res.species.url;
+      this.poKemonService.getGenerico(url).subscribe((res: any) =>{
+        url = res.evolution_chain.url;
+        this.poKemonService.getGenerico(url).subscribe((res: any) =>{
+          console.log(res);
+        })
+      })
+    })
   }
 
   extrairEvolucoes() {
