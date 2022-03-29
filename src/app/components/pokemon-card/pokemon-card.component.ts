@@ -20,7 +20,7 @@ export class PokemonCardComponent implements OnInit {
     this.getPokemons();
   }
   getPokemons(){
-    this.pokemonService.getPokemons(20, this.page ++)
+    this.pokemonService.getPokemons(50, this.page ++)
     .subscribe((response: any ) =>{
       this.totalPokemons = response.count;
       response.results.forEach((result: any) => {

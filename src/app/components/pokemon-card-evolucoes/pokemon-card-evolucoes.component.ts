@@ -56,12 +56,19 @@ export class PokemonCardEvolucoesComponent implements OnInit {
 
   extrairEvol(novasEvol: any) {
     this.names.push(novasEvol.chain.species.name);
-    if (novasEvol.chain.evolves_to != 0) {
+    if (novasEvol.chain.evolves_to.length != 0) {
       this.names.push(novasEvol.chain.evolves_to[0].species.name);
-      if (novasEvol.chain.evolves_to.evolves_to != 0) {
-        this.names.push(novasEvol.chain.evolves_to[0].evolves_to[0].species.name);
-        if(novasEvol.chain.evolves_to[0].evolves_to[0].evolves_to !=0){
-          this.names.push(novasEvol.chain.evolves_to[0].evolves_to[0].evolves_to[0].species.name);
+      if (novasEvol.chain.evolves_to[0].evolves_to.length != 0) {
+        this.names.push(
+          novasEvol.chain.evolves_to[0].evolves_to[0].species.name
+        );
+        if (
+          novasEvol.chain.evolves_to[0].evolves_to[0].evolves_to.length != 0
+        ) {
+          this.names.push(
+            novasEvol.chain.evolves_to[0].evolves_to[0].evolves_to[0].species
+              .name
+          );
         }
       }
     }
@@ -91,7 +98,7 @@ export class PokemonCardEvolucoesComponent implements OnInit {
     if (array) {
       this.sem_evolucao = false;
       for (let evol of array) {
-        console.log(evol)
+        console.log(evol);
         this.poKemonService.getPokemon(evol).subscribe((res) => {
           this.evolucao.push(res);
           this.evolucao.sort((a: any, b: any) => {
