@@ -101,12 +101,13 @@ export class PokemonCardEvolucoesComponent implements OnInit {
         console.log(evol);
         this.poKemonService.getPokemon(evol).subscribe((res) => {
           this.evolucao.push(res);
-          this.evolucao.sort((a: any, b: any) => {
-            return a.id - b.id;
-          });
+          // this.evolucao.sort((a: any, b: any) => {
+          //   return a.id - b.id;
+          // });
         });
       }
     }
+    console.log(this.evolucao)
   }
   // getPokemon(name: string) {
   //   if (name) {
