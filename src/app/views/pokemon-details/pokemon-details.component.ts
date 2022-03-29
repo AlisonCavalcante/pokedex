@@ -50,7 +50,7 @@ export class PokemonDetailsComponent implements OnInit {
       if (this.id == pokemon.id) {
         this.pokemons.push(pokemon.weaknesses);
         this.pokemons.splice(1, 1);
-        console.log(this.pokemons);
+
       }
     }
   }
