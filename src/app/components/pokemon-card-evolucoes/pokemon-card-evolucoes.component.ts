@@ -10,14 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonCardEvolucoesComponent implements OnInit {
   id!: string;
-  pokemons: any[] = [];
+
   // evolucoes: any[] = [];
+  pokemons: any[] = [];
   evolucao: any[] = [];
-  // prev_evolution: any;
   sem_evolucao = true;
-  // evolucao_previa = false;
   names: any[] = [];
   evolucoesNovas: any;
+  // prev_evolution: any;
+
+  // evolucao_previa = false;
+
 
   constructor(
     private poKemonService: PokemonService,
@@ -98,16 +101,15 @@ export class PokemonCardEvolucoesComponent implements OnInit {
     if (array) {
       this.sem_evolucao = false;
       for (let evol of array) {
-        console.log(evol);
         this.poKemonService.getPokemon(evol).subscribe((res) => {
           this.evolucao.push(res);
-          // this.evolucao.sort((a: any, b: any) => {
-          //   return a.id - b.id;
-          // });
+            this.evolucao.sort((a: any, b: any) => {
+              return a.id - b.id;
+            });
         });
       }
     }
-    console.log(this.evolucao)
+
   }
   // getPokemon(name: string) {
   //   if (name) {

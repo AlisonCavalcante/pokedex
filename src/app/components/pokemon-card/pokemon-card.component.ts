@@ -27,6 +27,9 @@ export class PokemonCardComponent implements OnInit {
         this.pokemonService.getMaisInfo(result.name)
         .subscribe((uniqresponse: any) =>{
           this.pokemons.push(uniqresponse);
+           this.pokemons.sort((a: any, b: any) => {
+             return a.id - b.id;
+           });
           this.setPokemons.push(uniqresponse);
         })
       })
