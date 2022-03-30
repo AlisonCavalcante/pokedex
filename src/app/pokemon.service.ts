@@ -43,13 +43,16 @@ export class PokemonService {
   // }
 
   getPokemonEvolucoes(){
-    return this.http.get(Constantes.URLEVOLUCOES).pipe(
-      map(
-        res => res
-      )
-    )
-  }
+     return this.http.get(Constantes.URLEVOLUCOES).pipe(
+       map(
+         res => res
+       )
+     )
+   }
 
+  getMegaEvol(id: string){
+    return this.http.get(Constantes.URLMEGAEVOLUCOES+`${id}`);
+  }
   getGenerico(url: string){
     return this.http.get(url);
   }

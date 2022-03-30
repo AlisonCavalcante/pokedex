@@ -12,7 +12,8 @@ export class PokemonDetailsComponent implements OnInit {
 
   id!: string;
   pokemons: any[] = [];
-
+  megaEvolucoes: any;
+  nomes: any[] = [];
   public isLoading: boolean = false;
 
   constructor(
@@ -32,6 +33,7 @@ export class PokemonDetailsComponent implements OnInit {
         window.location.reload();
       }
     });
+    this.getMegaEvolucoes();
   }
 
   get pokemon() {
@@ -49,9 +51,17 @@ export class PokemonDetailsComponent implements OnInit {
     for (let pokemon of this.pokemons[1].pokemon) {
       if (this.id == pokemon.id) {
         this.pokemons.push(pokemon.weaknesses);
-        this.pokemons.splice(1, 1);
-
       }
     }
+  }
+  getMegaEvolucoes(){
+    this.pokemonService.getMegaEvol(this.id).subscribe((res: any) =>{
+      for(let i of res.varieties){
+        this.nomes.push(i.pokemon.name);
+        console.log(i.pokemon.name)
+      }
+
+    });
+
   }
 }

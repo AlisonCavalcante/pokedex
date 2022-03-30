@@ -49,7 +49,6 @@ export class PokemonCardEvolucoesComponent implements OnInit {
         this.poKemonService.getGenerico(url).subscribe((res: any) => {
           url = res.evolution_chain.url;
           this.poKemonService.getGenerico(url).subscribe((res: any) => {
-            console.log(res);
             this.evolucoesNovas = res;
             this.extrairEvol(this.evolucoesNovas);
           });
