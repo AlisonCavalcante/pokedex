@@ -55,20 +55,23 @@ export class PokemonDetailsComponent implements OnInit {
     for (let pokemon of this.pokemons[1].pokemon) {
       if (this.id == pokemon.id) {
         this.pokemons.push(pokemon.weaknesses);
+        this.pokemons.splice(1,1);
+        console.log(this.pokemons)
       }
     }
   }
   getMegaEvolucoes(){
+
     this.pokemonService.getMegaEvol(this.id).subscribe((res: any) =>{
        for(let i of res.varieties){
          this.nomes.push(i.pokemon.name);
        }
       this.nomes.splice(0,1);
     });
-    console.log(this.nomes)
+
   }
   busarMegaEvol(){
-    console.log(this.nomeMega);
+
     this.pokemonService.getGenerico(Constantes.URLBASE+`${this.nomeMega}`).subscribe((res:any) =>{
       this.rota.navigate(['/pokemon', res.id]);
     })

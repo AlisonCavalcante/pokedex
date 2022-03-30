@@ -38,21 +38,21 @@
               <ul>
                 <li>
                   <span class="title-atributo">Height:</span>
-                  <span>sad</span>
+                  <span>{{ pokemons[0].height}}</span>
                 </li>
                 <li>
-                  <span class="title-atributo">Weigh:</span>
-                  <span>sa</span>
+                  <span class="title-atributo">Weight:</span>
+                  <span>{{ pokemons[0].weight}}</span>
                 </li>
                 <li></li>
               </ul>
             </div>
             <div>
               <ul>
-                <li>
+                <!-- <li>
                   <span class="title-atributo">Category:</span>
                   <span></span>
-                </li>
+                </li> -->
                 <li>
                   <span class="title-atributo">Abilities:</span>
                   <span class="atributo-value">{{
@@ -97,7 +97,7 @@
             </div>
           </div>
         </div>
-        <div class="pokemon-card__types">
+        <div *ngIf="pokemons[1].length != undefined" class="pokemon-card__types">
           <h2>Fraquezas</h2>
           <div class="pokemon-card__type-container">
             <div
