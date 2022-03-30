@@ -1,9 +1,22 @@
 <div class="container">
   <ng-template [ngIf]="isLoading">
     <div class="card pokemon-card_container">
-      <div>
-        <select  class="form-select,btn btn-secondary form-select-lg mb-3" aria-label="Default select example">
-          <option style="text-transform: capitalize;" *ngFor="let item of nomes" selected>{{item}}</option>
+      <div *ngIf="nomes.length != 0">
+        <select
+          class="form-select,btn btn-secondary form-select-lg mb-3"
+          aria-label="Default select example"
+          type ="text"
+          [(ngModel)]="nomeMega"
+          (ngModelChange)="busarMegaEvol()"
+        >
+          <option
+            style="text-transform: capitalize"
+            *ngFor="let item of nomes"
+            selected
+            [ngValue]="item"
+          >
+            {{ item }}
+          </option>
         </select>
       </div>
       <div class="pokemon-card-header">

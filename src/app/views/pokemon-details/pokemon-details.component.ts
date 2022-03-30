@@ -1,6 +1,7 @@
+import { Constantes } from './../../utils/constantes';
 import { PokemonService } from './../../pokemon.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -14,11 +15,13 @@ export class PokemonDetailsComponent implements OnInit {
   pokemons: any[] = [];
   megaEvolucoes: any;
   nomes: any[] = [];
+  nomeMega!: string;
   public isLoading: boolean = false;
 
   constructor(
     private activeRouter: ActivatedRoute,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private rota: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,5 +66,11 @@ export class PokemonDetailsComponent implements OnInit {
       this.nomes.splice(0,1);
     });
     console.log(this.nomes)
+  }
+  busarMegaEvol(){
+    console.log(this.nomeMega);
+    this.pokemonService.getGenerico(Constantes.URLBASE+`${this.nomeMega}`).subscribe((res:any) =>{
+      this.rota.navigate(['/pokemon', res.id]);
+    })
   }
 }
