@@ -34,6 +34,7 @@ export class PokemonDetailsComponent implements OnInit {
       }
     });
     this.getMegaEvolucoes();
+
   }
 
   get pokemon() {
@@ -56,12 +57,11 @@ export class PokemonDetailsComponent implements OnInit {
   }
   getMegaEvolucoes(){
     this.pokemonService.getMegaEvol(this.id).subscribe((res: any) =>{
-      for(let i of res.varieties){
-        this.nomes.push(i.pokemon.name);
-        console.log(i.pokemon.name)
-      }
-
+       for(let i of res.varieties){
+         this.nomes.push(i.pokemon.name);
+       }
+      this.nomes.splice(0,1);
     });
-
+    console.log(this.nomes)
   }
 }

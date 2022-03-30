@@ -14,7 +14,7 @@ export class PokemonService {
 
   // pegando todos os pokemons
   getPokemons(limit: number, offset: number){
-    console.log(offset)
+
     return this.http.get(Constantes.URLBASE+`?limit=${limit}&offset=${offset}`);
   }
 
