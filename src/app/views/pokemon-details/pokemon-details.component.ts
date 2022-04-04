@@ -12,6 +12,7 @@ import { forkJoin } from 'rxjs';
 export class PokemonDetailsComponent implements OnInit {
 
   id!: string;
+  meuFavorito: boolean = false;
   pokemons: any[] = [];
   megaEvolucoes: any;
   nomes: any[] = [];
@@ -38,6 +39,9 @@ export class PokemonDetailsComponent implements OnInit {
     });
     this.getMegaEvolucoes();
 
+  }
+  favoritar(){
+    this.meuFavorito = !this.meuFavorito;
   }
 
   get pokemon() {

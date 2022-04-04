@@ -21,6 +21,7 @@
       </div>
       <div class="pokemon-card-header">
         <div class="pokemon-card_img">
+          <i style="font-size: 2rem;" (click)="favoritar()" [ngClass]="{'bi bi-star': !meuFavorito, 'bi bi-star-fill': meuFavorito }"></i>
           <img
             class="card-img-top slideInDown"
             [src]="pokemons[0].sprites.other.home.front_default"
